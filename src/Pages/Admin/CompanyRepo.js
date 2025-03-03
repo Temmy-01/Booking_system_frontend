@@ -76,7 +76,6 @@ export default function CompanyIndex() {
   };
 
   const handleDelete = async (id) => {
-    // Show confirmation dialog
     const result = await MySwal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -89,10 +88,9 @@ export default function CompanyIndex() {
 
     if (result.isConfirmed) {
       try {
-        // Proceed with deletion
         await axiosInstance.delete(`/user/repository/delete/${id}`);
         toast.success("User deleted successfully!");
-        handleRefresh(); // Refresh the list or update the state as needed
+        handleRefresh();
       } catch (error) {
         console.error("Error deleting user:", error);
         toast.error("Error deleting user.");
