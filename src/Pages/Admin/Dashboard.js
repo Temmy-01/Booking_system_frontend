@@ -26,7 +26,7 @@ export default function DashboardPage() {
                       </span>
                     </h4>
                     <p className="text-muted mb-0">
-                      Here’s what’s happening within Justfood today.
+                      Here’s what’s happening today.
                     </p>
                   </div>
                 </div>
