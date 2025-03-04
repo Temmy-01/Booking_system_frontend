@@ -99,23 +99,23 @@ export default function SideBar() {
             <li
               className="nav-item"
               style={
-                location.pathname === "/app/user/vendor" ? activeLinkStyle : {}
+                location.pathname === "/app/repo" ? activeLinkStyle : {}
               }
             >
-              <Link className="nav-link menu-link" to="/app/user/vendor">
+              <Link className="nav-link menu-link" to="/app/repo">
                 <i
                   className="ri-dashboard-2-line"
                   style={
-                    location.pathname === "/app/user/vendor" ? activeLink : {}
+                    location.pathname === "/app/repo" ? activeLink : {}
                   }
                 ></i>
                 <span
                   data-key="t-widgets"
                   style={
-                    location.pathname === "/app/user/vendor" ? activeLink : {}
+                    location.pathname === "/app/repo" ? activeLink : {}
                   }
                 >
-                  Storage Account{" "}
+                  Organisation Repo{" "}
                 </span>
               </Link>
             </li>
