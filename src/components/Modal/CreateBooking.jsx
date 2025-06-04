@@ -1,4 +1,3 @@
-
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
@@ -7,10 +6,12 @@ import Col from "react-bootstrap/Col";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import axiosInstance from "../../hooks/axiosInstance";
+import Spinner from "react-bootstrap/Spinner"; 
 
 export default function CreateBooking({ show, closeModal, refreshPage }) {
     const [validationError, setValidationError] = useState({});
     const [isLoading, setIsLoading] = useState(false);
+    const [isSlotsLoading, setIsSlotsLoading] = useState(false); 
     const [availableSlots, setAvailableSlots] = useState([]);
     const [formData, setFormData] = useState({
         appointment_for: "",
@@ -21,17 +22,22 @@ export default function CreateBooking({ show, closeModal, refreshPage }) {
     });
 
     const fetchAvailableSlots = async (date) => {
+        setIsSlotsLoading(true); 
         try {
             const response = await axiosInstance.get("user/booking/slots", { params: { date } });
             setAvailableSlots(response.data.data.values);
         } catch (error) {
             toast.error("Failed to fetch available slots.");
+        } finally {
+            setIsSlotsLoading(false); 
         }
     };
 
     useEffect(() => {
         if (formData.meeting_date) {
             fetchAvailableSlots(formData.meeting_date);
+        } else {
+            setAvailableSlots([]); 
         }
     }, [formData.meeting_date]);
 
@@ -150,19 +156,35 @@ export default function CreateBooking({ show, closeModal, refreshPage }) {
                                         name="meeting_time"
                                         value={formData.meeting_time}
                                         onChange={handleChange}
+                                        disabled={isSlotsLoading || !formData.meeting_date} // Disable while loading or no date selected
                                     >
-                                        <option value="">Select a time slot</option>
-                                        {availableSlots.map((slot) => (
-                                            <option
-                                                key={slot.time}
-                                                value={slot.time}
-                                                disabled={!slot.available}
-                                                style={{ opacity: slot.available ? 1 : 0.5 }}
-                                            >
-                                                {slot.time}
-                                            </option>
-                                        ))}
+                                        <option value="">
+                                            {isSlotsLoading
+                                                ? "Loading slots..."
+                                                : formData.meeting_date
+                                                    ? "Select a time slot"
+                                                    : "Select a date first"}
+                                        </option>
+                                        {!isSlotsLoading &&
+                                            availableSlots.map((slot) => (
+                                                <option
+                                                    key={slot.time}
+                                                    value={slot.time}
+                                                    disabled={!slot.available}
+                                                    style={{ opacity: slot.available ? 1 : 0.5 }}
+                                                >
+                                                    {slot.time}
+                                                </option>
+                                            ))}
                                     </Form.Select>
+                                    {isSlotsLoading && (
+                                        <Spinner
+                                            animation="border"
+                                            size="sm"
+                                            className="mt-2"
+                                            style={{ display: "block" }}
+                                        />
+                                    )}
                                     {validationError.meeting_time && (
                                         <small className="text-danger">{validationError.meeting_time[0]}</small>
                                     )}
