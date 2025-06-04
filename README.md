@@ -21,7 +21,7 @@ This is the React frontend for the **Booking_system_frontend** appointment booki
 - **API Requests**: Axios
 - **Notifications**: React Toastify, SweetAlert2
 - **Routing**: React Router DOM
-- **Build Tool**: Vite or Create React App (adjust based on your setup)
+- **Build Tool**: Create React App (adjust based on your setup)
 
 ## **Prerequisites**
 - Node.js 16+ (recommended: 18.x)
