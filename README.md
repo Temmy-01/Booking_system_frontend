@@ -1,5 +1,10 @@
 # Booking_system_frontend
 
+
+# LOGIN DETAILS
+- Email: admin@boilerplate.com
+- Password: password
+
 This is the React frontend for the **Booking_system_frontend** appointment booking system. It provides a user-friendly interface for users to book 1-hour appointment slots (8 AM–4 PM), view existing bookings, and manage appointments. The frontend communicates with a Laravel backend API to sync with a service provider’s Google Calendar, check slot availability, and send `.ics` calendar invites to bookers.
 
 ## **Features**
