@@ -12,6 +12,7 @@ import ProtectedRoute from "./hooks/protectedRoute";
 import Forbidden from "./Pages/Admin/Forbidden";
 import NotFoundPage from "./Pages/Admin/NotFoundPage";
 import OrganisationRepo from "./Pages/Admin/OrganisationRepo";
+import Booking from "./Pages/Admin/Booking";
 
 
 const AppRoutes = () => {
@@ -43,7 +44,15 @@ const AppRoutes = () => {
       />
       <Route
         path="/app/repo"
-        element={<ProtectedRoute element={OrganisationRepo} layout={BaseLayout} />}
+        element={
+          <ProtectedRoute element={OrganisationRepo} layout={BaseLayout} />
+        }
+      />
+      <Route
+        path="/app/booking"
+        element={
+          <ProtectedRoute element={Booking} layout={BaseLayout} />
+        }
       />
       {/* <Route
         path="/app/index"

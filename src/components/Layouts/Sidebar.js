@@ -36,7 +36,9 @@ export default function SideBar() {
           </span>
           <span className="logo-lg">
             {/* <img src="/assets/ActionAid.png" alt="" height="70" /> */}
-            <div className="text-white" style={{ fontSize: "20px" }}>Settings</div>
+            <div className="text-white" style={{ fontSize: "20px" }}>
+              Settings
+            </div>
           </span>
         </Link>
         <button
@@ -75,7 +77,7 @@ export default function SideBar() {
                 </span>
               </Link>
             </li>
-            <li className="menu-title">
+            {/* <li className="menu-title">
               <span data-key="t-menu">Account Management</span>
             </li>
 
@@ -95,27 +97,38 @@ export default function SideBar() {
                   Repositories{" "}
                 </span>
               </Link>
-            </li>
-            <li
+            </li> */}
+            {/* <li
               className="nav-item"
-              style={
-                location.pathname === "/app/repo" ? activeLinkStyle : {}
-              }
+              style={location.pathname === "/app/repo" ? activeLinkStyle : {}}
             >
               <Link className="nav-link menu-link" to="/app/repo">
                 <i
                   className="ri-dashboard-2-line"
-                  style={
-                    location.pathname === "/app/repo" ? activeLink : {}
-                  }
+                  style={location.pathname === "/app/repo" ? activeLink : {}}
                 ></i>
                 <span
                   data-key="t-widgets"
-                  style={
-                    location.pathname === "/app/repo" ? activeLink : {}
-                  }
+                  style={location.pathname === "/app/repo" ? activeLink : {}}
                 >
                   Organisation Repo{" "}
+                </span>
+              </Link>
+            </li> */}
+            <li
+              className="nav-item"
+              style={location.pathname === "/app/booking" ? activeLinkStyle : {}}
+            >
+              <Link className="nav-link menu-link" to="/app/booking">
+                <i
+                  className="ri-dashboard-2-line"
+                  style={location.pathname === "/app/booking" ? activeLink : {}}
+                ></i>
+                <span
+                  data-key="t-widgets"
+                  style={location.pathname === "/app/booking" ? activeLink : {}}
+                >
+                  Booking{" "}
                 </span>
               </Link>
             </li>
